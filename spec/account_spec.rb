@@ -15,4 +15,12 @@ describe Account do
     end
   end
 
+  describe '#withdraw' do
+    it 'can remove money from the account' do
+      subject.deposit(10)
+      subject.withdraw(5)
+      expect(subject.show_balance).to eq(5)
+    end
+  end
+
 end
