@@ -9,7 +9,7 @@ describe Statement do
   end
 
   describe '#add_header' do
-    it 'Adds the statement header to the statement array'do
+    it 'Adds the statement header to the statement array' do
       subject.add_header
       expect(subject.print_statement).to eq("date || credit || debit || balance")
     end

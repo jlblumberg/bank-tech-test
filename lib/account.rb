@@ -5,7 +5,7 @@ class Account
   end
 
   def show_balance
-    @balance
+    "#{@balance.to_f}0"
   end
 
   def deposit(amount)
