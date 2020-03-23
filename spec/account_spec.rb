@@ -2,7 +2,7 @@ require 'account'
 
 describe Account do
 
-  describe '#stringify' do
+  describe '#balance_to_string' do
 
     it 'returns the accounts current balance as a string' do
       expect(subject.balance_to_string).to eq("0.00")
