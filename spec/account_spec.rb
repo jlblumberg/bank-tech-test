@@ -41,7 +41,13 @@ describe Account do
       subject.withdraw(10)
       expect(subject.transactions).to eq([current_time, "", "10.00", "-10.00"])
     end
-    
+
+    it 'can keep a record of multiple transactions' do
+      subject.deposit(10)
+      subject.withdraw(5)
+      expect(subject.transactions).to eq([current_time, "10.00", "", "10.00", current_time, "", "5.00", "5.00"])
+    end
+
   end
 
 end
