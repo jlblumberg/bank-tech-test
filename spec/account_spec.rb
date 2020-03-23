@@ -30,17 +30,18 @@ describe Account do
   end
 
   describe '#add_transaction' do
+    let(:current_time) { Time.now.strftime("%d/%m/%Y") }
 
     it 'adds a credit transaction to the list of transactions' do
       subject.deposit(10)
-      expect(subject.transactions).to eq([Time.now.strftime("%d/%m/%Y"), "10.00", "", "10.00"])
+      expect(subject.transactions).to eq([current_time, "10.00", "", "10.00"])
     end
 
     it 'adds a debit transaction to the list of transactions' do
       subject.withdraw(10)
-      expect(subject.transactions).to eq([Time.now.strftime("%d/%m/%Y"), "", "10.00", "-10.00"])
+      expect(subject.transactions).to eq([current_time, "", "10.00", "-10.00"])
     end
-
+    
   end
 
 end
