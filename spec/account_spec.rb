@@ -2,10 +2,10 @@ require 'account'
 
 describe Account do
 
-  describe '#show_balance' do
+  describe '#stringify' do
 
-    it 'returns the accounts current balance' do
-      expect(subject.show_balance).to eq("0.00")
+    it 'returns the accounts current balance as a string' do
+      expect(subject.balance_to_string).to eq("0.00")
     end
 
   end
@@ -14,7 +14,7 @@ describe Account do
 
     it 'can top up the account' do
       subject.deposit(10)
-      expect(subject.show_balance).to eq("10.00")
+      expect(subject.balance_to_string).to eq("10.00")
     end
 
   end
@@ -24,7 +24,21 @@ describe Account do
     it 'can remove money from the account' do
       subject.deposit(10)
       subject.withdraw(5)
-      expect(subject.show_balance).to eq("5.00")
+      expect(subject.balance_to_string).to eq("5.00")
+    end
+
+  end
+
+  describe '#add_transaction' do
+
+    it 'adds a credit transaction to the list of transactions' do
+      subject.deposit(10)
+      expect(subject.transactions).to eq([Time.now.strftime("%d/%m/%Y"), "10.00", "", "10.00"])
+    end
+
+    it 'adds a debit transaction to the list of transactions' do
+      subject.withdraw(10)
+      expect(subject.transactions).to eq([Time.now.strftime("%d/%m/%Y"), "", "10.00", "-10.00"])
     end
 
   end
