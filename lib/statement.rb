@@ -1,4 +1,6 @@
 class Statement
+
+  HEADER = "date || credit || debit || balance\n"
   
   def initialize(account)
     @transactions = account.transactions
@@ -12,7 +14,7 @@ class Statement
   end
 
   def add_header
-    @transactions = "date || credit || debit || balance\n" + @transactions
+    @transactions = HEADER + @transactions
   end
 
   def reverse_transactions
