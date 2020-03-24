@@ -24,7 +24,7 @@ class Statement
     @transactions = @transactions.join("\n")
   end
 
-  def print_statement
+  def return_statement
     format_statement
     @transactions
   end

@@ -2,9 +2,9 @@ require 'account'
 
 describe Account do
 
-    it 'Keeps track of the accounts balance' do
-      expect(subject.balance).to eq(0)
-    end
+  it 'Keeps track of the accounts balance' do
+    expect(subject.balance).to eq(0)
+  end
 
   describe '#deposit' do
 

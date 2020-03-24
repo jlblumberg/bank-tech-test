@@ -1,7 +1,7 @@
 # Bank Tech Test
 ### [Makers Academy](http://www.makersacademy.com) - Week 10 (tech tests)
 
-[Outline](#Outline) | [Specifications](#Specifications) | [User Stories](#User_Stories) | [Installation Instructions](#Installation_Instructions) | [Tech stack](#Tech_stack)
+[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#Planning) | [Installation Instructions](#Installation_Instructions) | [Tech stack](#Tech_stack)
 
 ## <a name="Outline">Outline</a>
 
@@ -29,7 +29,14 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
-## <a name="User_Stories">User Stories</a>
+## <a name="Planning">Planning</a>
+
+### Class Diagram
+
+Objects  | Attributes | Methods
+--- | --- | ---
+Account  | balance, transactions | deposit(amount), withdraw(amount), add_transaction(date, credit_amount, debit_amount)
+Statement | transactions | format_statement, return_statement
 
 ## <a name="Installation_Instructions">Installation Instructions</a>
 
