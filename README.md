@@ -38,6 +38,10 @@ Objects  | Attributes | Methods
 Account  | balance, transactions | deposit(amount), withdraw(amount), add_transaction(date, credit_amount, debit_amount)
 Statement | transactions | format_statement, return_statement
 
+### Approach
+
+The solution code is test driven, and structured into the classes Account and Statement, described above. The reason for this is to seperate the concerns of dealing with transactions and printing statements. There are mocks in the tests to isolate the units. 
+
 ## <a name="Installation_Instructions">Installation Instructions</a>
 
 ### Prerequisite setup:
@@ -45,7 +49,30 @@ Statement | transactions | format_statement, return_statement
 - Run the command `gem install bundle` (if you don't have bundler already) and then `bundle install`
 
 ### Running the app
-- Launch IRB with the command `irb`
+- Launch IRB with the command `irb`, and require the statement and account ruby files
+- Make a new account
+- Make a new statement, passing in your account
+- Make some deposits and withdrawals
+- Puts out the result of the 'return_statement' method to see your statement. 
+
+Full example:
+
+```
+$ irb -r ./lib/account.rb -r ./lib/statement.rb
+2.6.3 :001 > account = Account.new
+ => #<Account:0x00007fe7f2a68d08 @balance=0, @transactions=[]> 
+2.6.3 :002 > statement = Statement.new(account)
+ => #<Statement:0x00007fe7f287a848 @transactions=[]> 
+2.6.3 :003 > account.deposit(10)
+ => ["24/03/2020", "10.00", "", "10.00"] 
+2.6.3 :004 > account.withdraw(5)
+ => ["24/03/2020", "10.00", "", "10.00", "24/03/2020", "", "5.00", "5.00"] 
+2.6.3 :005 > puts statement.return_statement
+date || credit || debit || balance
+24/03/2020 || || 5.00 || 5.00
+24/03/2020 || 10.00 || || 10.00
+ => nil
+```
 
 ### Testing
 - Tests can be run using Rspec. Run the command `rspec`
