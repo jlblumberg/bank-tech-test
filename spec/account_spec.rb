@@ -2,19 +2,15 @@ require 'account'
 
 describe Account do
 
-  describe '#balance_to_string' do
-
-    it 'returns the accounts current balance as a string' do
-      expect(subject.balance_to_string).to eq("0.00")
+    it 'Keeps track of the accounts balance' do
+      expect(subject.balance).to eq(0)
     end
-
-  end
 
   describe '#deposit' do
 
     it 'can top up the account' do
       subject.deposit(10)
-      expect(subject.balance_to_string).to eq("10.00")
+      expect(subject.balance).to eq(10)
     end
 
   end
@@ -24,7 +20,7 @@ describe Account do
     it 'can remove money from the account' do
       subject.deposit(10)
       subject.withdraw(5)
-      expect(subject.balance_to_string).to eq("5.00")
+      expect(subject.balance).to eq(5)
     end
 
   end
