@@ -4,12 +4,29 @@ class Statement
     @transactions = account.transactions
   end
 
-  def print_statement
+  def format_statement
+    reverse_transactions
+    add_pipes_and_newlines
+    add_header
+    @transactions.gsub!("  ", " ")
+  end
+
+  def add_header
+    @transactions = "date || credit || debit || balance\n" + @transactions
+  end
+
+  def reverse_transactions
     @transactions = @transactions.each_slice(4).to_a.reverse
+  end
+
+  def add_pipes_and_newlines
     @transactions.map! { |transaction| transaction.join(" || ") }
     @transactions = @transactions.join("\n")
-    @transactions = "date || credit || debit || balance\n" + @transactions
-    @transactions.gsub!("  ", " ")
+  end
+
+  def print_statement
+    format_statement
+    @transactions
   end
 
 end
