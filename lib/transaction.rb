@@ -14,4 +14,5 @@ class Transaction
   def stringify(input)
     "#{input.to_f}0"
   end
+
 end

@@ -7,24 +7,20 @@ class Account
     @transactions = []
   end
 
-  def stringify(input)
-    input == "" ? "" : "#{input.to_f}0"
-  end
-
   def deposit(amount)
     @balance += amount
-    add_transaction(amount, "")
+    transaction = Transaction.new("credit", amount).details
+    add_transaction(transaction)
   end
 
   def withdraw(amount)
     @balance -= amount
-    add_transaction("", amount)
+    transaction = Transaction.new("debit", amount).details
+    add_transaction(transaction)
   end
 
-  def add_transaction(date = Time.now.strftime("%d/%m/%Y"), credit_amount, debit_amount)
-    credit_amount = stringify(credit_amount)
-    debit_amount = stringify(debit_amount)
-    @transactions.push(date, credit_amount, debit_amount, stringify(@balance))
+  def add_transaction(transaction)
+    @transactions.push(transaction[0], transaction[1], transaction[2], "#{@balance.to_f}0")
   end
 
 end
