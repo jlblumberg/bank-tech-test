@@ -35,12 +35,13 @@ date || credit || debit || balance
 
 Objects  | Attributes | Methods
 --- | --- | ---
-Account  | balance, transactions | deposit(amount), withdraw(amount), add_transaction(date, credit_amount, debit_amount)
+Account  | balance, transactions | deposit(amount), withdraw(amount), add_transaction(transaction)
+Transaction | date, type, amount | details
 Statement | transactions | format_statement, return_statement
 
 ### Approach
 
-The solution code is test driven, and structured into the classes Account and Statement, described above. The reason for this is to seperate the concerns of dealing with transactions and printing statements. There are mocks in the tests to isolate the units. 
+The solution code is test driven, and structured into the three classes Account, Transaction, and Statement, described above. The reason for this is to seperate the concerns of 1) maintaining a balance and transaction ledger, 2) handling transaction formatting, and 3) formatting/printing out the statement, respectively.
 
 ## <a name="Installation_Instructions">Installation Instructions</a>
 
@@ -58,7 +59,7 @@ The solution code is test driven, and structured into the classes Account and St
 Full example:
 
 ```
-$ irb -r ./lib/account.rb -r ./lib/statement.rb
+$ irb -r ./lib/account.rb -r ./lib/statement.rb -r ./lib/transaction.rb
 2.6.3 :001 > account = Account.new
  => #<Account:0x00007fe7f2a68d08 @balance=0, @transactions=[]> 
 2.6.3 :002 > statement = Statement.new(account)
