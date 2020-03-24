@@ -3,16 +3,13 @@ require 'statement'
 describe Statement do
 
   describe '#print_statement' do
-    it 'prints the statement' do
-      expect(subject.print_statement).to eq("")
-    end
-  end
+    let(:an_account) { double("account", transactions: ["01/12/2020", "10.00", "", "10.00", "02/12/2020", "", "5.00", "5.00"]) }
 
-  describe '#add_header' do
-    it 'Adds the statement header to the statement array' do
-      subject.add_header
-      expect(subject.print_statement).to eq("date || credit || debit || balance")
+    it 'Prints the statement in the desired format' do
+      statement = Statement.new(an_account)
+      expect(statement.print_statement).to eq("date || credit || debit || balance\n02/12/2020 || || 5.00 || 5.00\n01/12/2020 || 10.00 || || 10.00")
     end
+
   end
 
 end
