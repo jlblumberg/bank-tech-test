@@ -7,7 +7,7 @@ describe Statement do
 
     it 'Prints the statement in the desired format' do
       statement = Statement.new(an_account)
-      expect(statement.return_statement).to eq("date || credit || debit || balance\n02/12/2020 || || 5.00 || 5.00\n01/12/2020 || 10.00 || || 10.00")
+      expect { statement.print_statement }.to output("date || credit || debit || balance\n02/12/2020 || || 5.00 || 5.00\n01/12/2020 || 10.00 || || 10.00").to_stdout
     end
 
   end

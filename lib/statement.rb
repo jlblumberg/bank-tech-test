@@ -6,9 +6,9 @@ class Statement
     @transactions = account.transactions
   end
 
-  def return_statement
+  def print_statement
     format_statement
-    @transactions
+    print @transactions
   end
 
   private
