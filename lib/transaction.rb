@@ -11,6 +11,8 @@ class Transaction
     return [@date, "", stringify(@amount)] if @type == "debit"
   end
 
+  private
+
   def stringify(input)
     "#{input.to_f}0"
   end

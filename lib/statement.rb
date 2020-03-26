@@ -6,12 +6,12 @@ class Statement
     @transactions = account.transactions
   end
 
-  def format_statement
-    reverse_transactions
-    add_pipes_and_newlines
-    add_header
-    @transactions.gsub!("  ", " ")
+  def return_statement
+    format_statement
+    @transactions
   end
+
+  private
 
   def add_header
     @transactions = HEADER + @transactions
@@ -26,9 +26,11 @@ class Statement
     @transactions = @transactions.join("\n")
   end
 
-  def return_statement
-    format_statement
-    @transactions
+  def format_statement
+    reverse_transactions
+    add_pipes_and_newlines
+    add_header
+    @transactions.gsub!("  ", " ")
   end
 
 end

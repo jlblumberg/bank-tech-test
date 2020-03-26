@@ -19,6 +19,8 @@ class Account
     add_transaction(transaction)
   end
 
+  private
+
   def add_transaction(transaction)
     @transactions.push(transaction[0], transaction[1], transaction[2], "#{@balance.to_f}0")
   end
