@@ -68,7 +68,7 @@ $ irb -r ./lib/account.rb -r ./lib/statement.rb -r ./lib/transaction.rb
  => ["24/03/2020", "10.00", "", "10.00"] 
 2.6.3 :004 > account.withdraw(5)
  => ["24/03/2020", "10.00", "", "10.00", "24/03/2020", "", "5.00", "5.00"] 
-2.6.3 :005 > puts statement.return_statement
+2.6.3 :005 > puts statement.print_statement
 date || credit || debit || balance
 24/03/2020 || || 5.00 || 5.00
 24/03/2020 || 10.00 || || 10.00
